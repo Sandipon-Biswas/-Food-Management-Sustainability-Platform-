@@ -1,10 +1,10 @@
-# 🍎 Food Wastage Reduction Platform API Documentation
+#  Food Wastage Reduction Platform API Documentation
 
 Welcome to the comprehensive API documentation for the Food Wastage Reduction Platform. This guide details all available endpoints for user management, inventory tracking, logging food usage, and accessing resources.
 
 ---
 
-## 🚀 1. Authentication & User Module (`/auth`, `/users`)
+##  1. Authentication & User Module (`/auth`, `/users`)
 
 All endpoints marked with **🔐** require a **JWT (JSON Web Token)**. Pass it in the request header: `Authorization: Bearer <TOKEN>`.
 
