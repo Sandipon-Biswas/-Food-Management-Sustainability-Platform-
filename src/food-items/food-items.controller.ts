@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Param, HttpException, Delete, HttpStatus } from '@nestjs/common';
 import { FoodItemsService } from './food-items.service';
 import { CreateFoodItemDto } from './dto/create-food-item.dto';
 
@@ -34,5 +34,14 @@ export class FoodItemsController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.foodItemsService.findOne(id);
+  }
+
+  @Delete(':id')
+  async deleteFoodItem(@Param('id') id: string) {
+    try {
+      return await this.foodItemsService.remove(id);
+    } catch (err) {
+      throw new HttpException(err.message, HttpStatus.NOT_FOUND);
+    }
   }
 }

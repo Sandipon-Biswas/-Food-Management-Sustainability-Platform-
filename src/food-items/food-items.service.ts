@@ -41,4 +41,14 @@ export class FoodItemsService {
   async findOne(id: string): Promise<FoodItem | null> {
     return await this.foodItemModel.findById(id).lean();
   }
+
+  // FoodItemsService
+  async remove(id: string): Promise<{ message: string }> {
+    const item = await this.foodItemModel.findById(id);
+    if (!item) {
+      throw new Error('Food item not found');
+    }
+    await this.foodItemModel.deleteOne({ _id: id });
+    return { message: 'Food item deleted successfully' };
+  }
 }
